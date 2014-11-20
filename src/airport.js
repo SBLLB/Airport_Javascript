@@ -1,12 +1,15 @@
 function Airport(){
 	this.planes = [];
+	this.capacity = 2
 };
 
 function Plane(){};
 
 Airport.prototype.land = function(plane) {
-	this.planes.push(plane);
-	return plane;
+	if(this.planes.length < this.capacity) { 
+		this.planes.push(plane);
+		return plane;
+		}
 };
 
 Airport.prototype.takeoff = function(plane) {

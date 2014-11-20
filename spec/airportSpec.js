@@ -32,4 +32,25 @@ describe('My Javascript airport', function() {
 	it('should not let a plane leave unless at the airport', function() {
 		expect(airport.takeoff(plane)).toEqual(undefined)
 	});
+
+	it('should have a capacity', function() {
+		expect(airport.capacity).toEqual(2)
+	});
+
+	it('should not allow a plane to land if already full', function() {
+		2.times(airport.land, plane);
+		expect(airport.land(plane)).toEqual(undefined);
+	});
+
+	Number.prototype.times = function(args) {
+	  		var args = Array.prototype.slice.apply(arguments);
+	  		for(var i = 0; i < this; i++) {
+	    	args[0].apply(null, args.slice(1))
+	    }
+	};
+
+
 });
+
+
+
